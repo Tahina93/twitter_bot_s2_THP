@@ -80,7 +80,9 @@ def fav_and_follow_live
 
   topics = "#bonjour_monde"
   twitter_streaming.filter(track: topics) do |object|
-  puts object.text if object.is_a?(Twitter::Tweet)
+  print object.text if object.is_a?(Twitter::Tweet) 
+  puts "--@#{object.user.screen_name}"
+  puts " "
 
   twitter_login.fav object
   twitter_login.follow (object.user.screen_name)
